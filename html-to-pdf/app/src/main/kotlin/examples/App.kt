@@ -14,7 +14,7 @@ fun main() {
     val pdfGenerator = PdfGenerator()
     val invoice = Invoice()
     val contextValues = mapOf("invoice" to invoice, "items" to invoice.lineItems)
-    val message = renderer.render("invoice.html", contextValues)
+    val message = renderer.render2("invoice-rillet2.html", contextValues)
     pdfGenerator.generate(message)
 }
 
@@ -33,16 +33,21 @@ data class Invoice(
     val invoicedCompany: String = f.company.name(),
     val invoicedAddress: String = f.address.fullAddress(),
     val invoicedEmail: String = f.internet.email(),
-    val lineItems: List<LineItem> = List(nextInt(1, 4)) { LineItem() }
-)
+    val salesTax: Double = String.format("%.2f", f.random.nextDouble()).toDouble(),
+    val lineItems: List<LineItem> = List(nextInt(2, 4)) { LineItem() }
+) {
+    val totalPrice: Double
+        get() = String.format("%.2f", lineItems.fold(Double.fromBits(0)) { acc, item -> acc + item.totalPrice })
+            .toDouble()
+}
 
 data class LineItem(
     val description: String = f.commerce.productName(),
-    val unitPrice: Double = f.random.nextDouble(),
+    val unitPrice: Double = String.format("%.2f", f.random.nextDouble()).toDouble(),
     val amount: Int = f.random.nextInt(1, 5)
 ) {
     val totalPrice: Double
-        get() = unitPrice * amount
+        get() = String.format("%.2f", unitPrice * amount).toDouble()
 }
 
 inline fun <reified T : Any> T.asMap(): Map<String, Any> {

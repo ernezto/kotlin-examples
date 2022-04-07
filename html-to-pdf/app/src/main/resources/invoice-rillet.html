@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rillet default invoice template</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=DM+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+
+        body {
+            content: "Page "counter(page) " of "counter(pages);
+            font-family: DM Sans, sans-serif;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0%;
+            width: 100%;
+        }
+
+        .content {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .bg-gray-50 {
+            background: #FAFAFB;
+        }
+
+        .h-12 {
+            height: 3rem;
+        }
+
+        .max-w-64 {
+            max-width: 250px;
+        }
+
+        .w-one-half {
+            width: 50%;
+        }
+
+        .w-two-fifth {
+            width: 40%;
+        }
+
+        .w-one-third {
+            width: 33.333333%;
+        }
+
+        .w-one-quarter {
+            width: 25%;
+        }
+
+        .w-one-fifth {
+            width: 20%;
+        }
+
+        .w-one-sixth {
+            width: 16.666667%;
+        }
+
+        .panel-top {
+            padding: 0.5rem 2rem 2rem;
+        }
+
+        .panel-bottom {
+            padding: 0.5rem 2rem 0.5rem 2rem;
+        }
+
+        .panel {
+            padding: 2rem;
+        }
+
+        .panel-sm {
+            padding: 0.75rem 2rem 0.75rem 2rem;
+        }
+
+        .font-bold {
+            font-weight: 700;
+        }
+
+        .text-gray {
+            color: #BBBBBE;
+        }
+
+        .text-sm {
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+        }
+
+        .text-xl {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+        }
+
+        .text-3xl {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .divider {
+            border-bottom: 1px solid #E8E8E9;
+        }
+
+        .panel-bottom.divider {
+            border-top: 1px solid #E8E8E9;;
+            border-bottom: 0px;
+        }
+
+        .row.divider>div {
+            border-bottom: 1px solid #E8E8E9;
+        }
+
+        .table {
+            display: table;
+            width: 100%;
+        }
+
+        .align-right {
+            width: auto;
+            margin-right: 0%;
+            margin-left: auto;
+        }
+
+        .pr-8 {
+            padding-right: 2rem;
+        }
+
+        .pr-4 {
+            padding-right: 1rem;
+        }
+
+        .pt-2 {
+            padding-top: 0.5rem;
+        }
+
+        .pt-4 {
+            padding-top: 1rem;
+        }
+
+        .pt-8 {
+            padding-top: 2rem;
+        }
+
+        .pt-16 {
+            padding-top: 4rem;
+        }
+
+        .pb-2 {
+            padding-bottom: 0.5rem;
+        }
+
+        .pb-4 {
+            padding-bottom: 1rem;
+        }
+
+        .row {
+            display: table-row;
+        }
+
+        .cell {
+            display: table-cell;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <header>
+            <div class="panel-top divider">
+                <div class="table">
+                    <div class="row">
+                        <div class="cell">
+                            <div class="font-bold">$invoice.companyName</div>
+                            <div class="text-sm max-w-64">$invoice.companyAddress</div>
+                        </div>
+                        <div class="cell">
+                            <div class="text-3xl text-right">Invoice</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="panel divider">
+                <div class="table">
+                    <div class="row">
+                        <div class="cell">
+                            <div>$invoice.invoicedCompany</div>
+                            <div class="max-w-64">$invoice.invoicedAddress</div>
+                        </div>
+                        <div class="cell text-left ml-16 w-one-fifth">
+                            <div>
+                                <span class="font-bold">Invoice #</span>
+                            </div>
+                            <div>
+                                <span class="font-bold">Invoice Date</span>
+                            </div>
+                            <div>
+                                <span class="font-bold">Amount Due</span>
+                            </div>
+                        </div>
+                        <div class="cell text-right w-one-fifth">
+                            <div>
+                                <span>$invoice.number</span>
+                            </div>
+                            <div>
+                                <span>$invoice.date</span>
+                            </div>
+                            <div>
+                                <span>$invoice.totalPrice</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="panel-sm divider">
+                <div class="table">
+                    <div class="row">
+                        <div class="cell">
+                            <span class="font-bold pr-4">Due Date</span>
+                            <span>$invoice.dueDate</span>
+                        </div>
+                        <div class="cell w-two-fifth">
+                            <span class="font-bold pr-4">Terms</span>
+                            <span>$invoice.term</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="table pt-16">
+                    <div class="row divider">
+                        <div class="cell pb-2 w-one-half">
+                            <span>Description</span>
+                        </div>
+                        <div class="cell pb-2 w-one-sixth">
+                            <span>Quantity</span>
+                        </div>
+                        <div class="cell pb-2 w-one-sixth">
+                            <span>Rate</span>
+                        </div>
+                        <div class="cell pb-2 text-right w-one-sixth">
+                            <span class="font-bold">Amount</span>
+                        </div>
+                    </div>
+                    #foreach( $item in $items )
+                    <div class="row">
+                        <div class="cell w-one-half">
+                            <span>$item.description</span>
+                        </div>
+                        <div class="cell w-one-sixth">
+                            <span>$item.amount</span>
+                        </div>
+                        <div class="cell w-one-sixth">
+                            <span>$item.unitPrice</span>
+                        </div>
+                        <div class="cell text-right w-one-sixth">
+                            <span class="font-bold">$item.totalPrice</span>
+                        </div>
+                    </div>
+                    #end
+                </div>
+            </div>
+            <div class="panel-sm">
+                <div class="table align-right gap">
+                    <div class="row divider">
+                        <div class="cell w-one-quarter pb-2">
+                            <div class="text-gray">Net</div>
+                            <div class="text-gray">Sales Tax</div>
+                        </div>
+                        <div class="cell text-right">
+                            <div>$invoice.totalPrice</div>
+                            <div>$invoice.salesTax</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell pt-2">
+                            <div class="text-xl font-bold">Total</div>
+                        </div>
+                        <div class="cell text-right">
+                            <div>$invoice.salesTax</div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+        <footer>
+            <div class="panel-bottom divider text-sm pb-4">
+                <div>
+                    <div>For ACH/Wire payments, sent to:</div>
+                    <div>${invoice.transferName}</div>
+                    <div><span>ABA Routing: </span>${invoice.transferRouting}</div>
+                    <div><span>Account: </span>${invoice.transferAccount}</div>
+                </div>
+            </div>
+            <div class="panel-bottom h-12 bg-gray-50"></div>
+        </footer>
+
+    </div>
+</body>
+
+</html>

@@ -23,6 +23,8 @@ dependencies {
     implementation("org.jsoup:jsoup:1.14.3")
     implementation("org.apache.velocity:velocity-tools:2.0")
     implementation("org.apache.velocity:velocity-engine-core:2.3")
+
+    implementation("org.freemarker:freemarker:2.3.31")
     implementation(kotlin("reflect"))
 }
 
